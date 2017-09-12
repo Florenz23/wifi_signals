@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Graph from './script/components/graph'
+import Graph from './scripts/components/graph'
 
 export default class App extends React.Component {
   state = { dataSetIndex: 0 }
