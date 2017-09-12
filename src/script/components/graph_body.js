@@ -1,8 +1,7 @@
 import React from 'react';
-import data from '../data'
 
 export default class GraphBody extends React.Component {
-  static defaultProps = { multiplier: 20 , data:data};
+  static defaultProps = { multiplier: 20 };
 
   prepareData() {
     let d = [`M ${this.props.x} ${this.props.y}`];
