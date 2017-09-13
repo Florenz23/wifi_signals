@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default class GraphBody extends React.Component {
-  static defaultProps = { multiplier_x: (33+1/3), multiplier_y:20 };
+  static defaultProps = { multiplier_x: (33+1/3), multiplier_y:10 };
 
   timestampToTime(timestamp) {
       let date = new Date(timestamp *1000)
