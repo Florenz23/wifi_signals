@@ -1,12 +1,21 @@
 import React from 'react';
 
 export default class GraphBody extends React.Component {
-  static defaultProps = { multiplier_x: (33+1/3), multiplier_y:-1 };
+  static defaultProps = { multiplier_x: (33+1/3), multiplier_y:10 };
+
+  timestampToTime(timestamp) {
+      let date = new Date(timestamp *1000)
+      const hour = date.getHours()
+      const minutes = date.getMinutes()
+      const new_time = hour + minutes * 0.01
+      return new_time
+  }
 
   prepareData() {
     let d = [`M ${this.props.x} ${this.props.y}`];
     let collector = this.props.data.map(chunk => {
-      let xNext = this.props.x + chunk[0] * this.props.length/25;
+      let hour = this.timestampToTime(chunk[0])
+      let xNext = this.props.x + hour * this.props.length/25;
       let yNext = this.props.y - chunk[1] * this.props.multiplier_y;
       return `L ${xNext} ${yNext}`;
     });
