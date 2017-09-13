@@ -6,7 +6,7 @@ export default class GraphBody extends React.Component {
   prepareData() {
     let d = [`M ${this.props.x} ${this.props.y}`];
     let collector = this.props.data.map(chunk => {
-      let xNext = this.props.x + chunk[0] * this.props.multiplier_x;
+      let xNext = this.props.x + chunk[0] * this.props.length/25;
       let yNext = this.props.y - chunk[1] * this.props.multiplier_y;
       return `L ${xNext} ${yNext}`;
     });

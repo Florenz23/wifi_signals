@@ -25,12 +25,12 @@ export default class Graph extends React.Component {
           x={20}
           y={this.props.height - 50}
           length={this.props.width}
-          horizontal={true}
         />
         <GraphBody
           x={20}
           y={this.props.height - 100}
           data={this.props.data}
+          length={this.props.width}
         />
       </svg>
     )
