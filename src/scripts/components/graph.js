@@ -1,6 +1,7 @@
 import React from 'react';
 import Axis from './axis';
 import GraphBody from './graph_body';
+import Legend from './graph_x_legend';
 
 export default class Graph extends React.Component {
   static defaultProps = { width: 800, height: 600 };
@@ -19,6 +20,12 @@ export default class Graph extends React.Component {
           y={0}
           length={this.props.height - 100}
           horizontal={false}
+        />
+        <Legend
+          x={20}
+          y={this.props.height - 50}
+          length={this.props.width}
+          horizontal={true}
         />
         <GraphBody
           x={20}
