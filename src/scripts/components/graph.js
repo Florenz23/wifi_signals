@@ -1,6 +1,7 @@
 import React from 'react';
 import Axis from './axis';
 import GraphBody from './graph_body';
+import SimpleGraph from './simple_graph';
 import LegendX from './graph_x_legend';
 import LegendY from './graph_y_legend';
 import findMax from '../findMax'
@@ -8,7 +9,6 @@ import findMax from '../findMax'
 
 export default class Graph extends React.Component {
   static defaultProps = { width: 800, height: 600 };
-
   render() {
     return (
       <svg width={this.props.width} height={this.props.height}>
@@ -35,7 +35,7 @@ export default class Graph extends React.Component {
           length={this.props.height}
           max = {findMax(this.props.data)}
         />
-        <GraphBody
+        <SimpleGraph
           x={50}
           y={this.props.height - 100}
           data={this.props.data}

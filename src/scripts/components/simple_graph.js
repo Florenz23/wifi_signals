@@ -1,8 +1,8 @@
 import React from 'react';
 import createSimpleArray from '../createSimpleArray'
-// import groupByPassedTime from '../groupByPassedTime'
+import groupByPassedTime from '../groupByPassedTime'
 
-export default class GraphBody extends React.Component {
+export default class SimpleGraph extends React.Component {
   static defaultProps = { multiplier_x: (33+1/3), multiplier_y:10 };
 
   timestampToTime(timestamp) {

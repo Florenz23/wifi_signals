@@ -21,6 +21,40 @@ export default function groupByPassedTime (getData) {
     {"time" : 8, "amount":3},
     {"time" : 9, "amount":3},
   ]
+  const data3 = [
+    [
+        {"time" : 1, "amount":1},
+        {"time" : 2, "amount":1},
+        {"time" : 3, "amount":1}
+    ],
+    [
+      {"time" : 4, "amount":2},
+      {"time" : 5, "amount":2},
+      {"time" : 6, "amount":2},
+      {"time" : 7, "amount":2}
+    ],
+    [
+      {"time" : 8, "amount":3},
+      {"time" : 9, "amount":3}
+    ]
+  ]
+  const data4 = [
+    [
+        {"time" : 1, "amount":1},
+        {"time" : 2, "amount":1}
+    ],
+    [
+      {"time" : 6, "amount":1},
+      {"time" : 7, "amount":2},
+      {"time" : 8, "amount":2},
+      {"time" : 9, "amount":2}
+    ],
+    [
+      {"time" : 10, "amount":2},
+      {"time" : 11, "amount":3},
+      {"time" : 12, "amount":3}
+    ]
+  ]
   let array = getData
   let indexArray = createIndexArray(data)
   // console.log(indexArray)
