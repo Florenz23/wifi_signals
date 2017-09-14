@@ -1,6 +1,7 @@
 import React from 'react';
 import createSimpleArray from '../createSimpleArray'
 import groupByPassedTime from '../groupByPassedTime'
+import easyGroup from '../easyGroup'
 
 export default class SimpleGraph extends React.Component {
   static defaultProps = { multiplier_x: (33+1/3), multiplier_y:10 };
@@ -15,6 +16,7 @@ export default class SimpleGraph extends React.Component {
 
   prepareData() {
     let data = createSimpleArray(this.props.data)
+    let data_simple = easyGroup(this.props.data)
     // let dataCut = groupByPassedTime()
     let d = [`M ${this.props.x} ${this.props.y}`];
     let multiplier = this.props.height/(this.props.max)

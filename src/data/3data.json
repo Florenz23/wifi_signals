@@ -49,7 +49,7 @@
       "mac": "8c:2d:aa:44:3d:df"
     }
   ],
-  "timestamp": 1504733535
+  "timestamp": 1504733536
 },
 {
   "node": "wifi4garden1",
@@ -68,8 +68,13 @@
       "rssi": -86,
       "company": "Apple, Inc.",
       "mac": "8c:2d:aa:44:3d:df"
+  },
+    {
+      "rssi": -86,
+      "company": "Apple, Inc.",
+      "mac": "8c:2d:aa:44:3d:df"
     }
   ],
-  "timestamp": 1504734535
+  "timestamp": 1504734536
 }
 ]]
