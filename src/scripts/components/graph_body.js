@@ -1,4 +1,6 @@
 import React from 'react';
+import createSimpleArray from '../createSimpleArray'
+import groupByPassedTime from '../groupByPassedTime'
 
 export default class GraphBody extends React.Component {
   static defaultProps = { multiplier_x: (33+1/3), multiplier_y:10 };
@@ -12,12 +14,14 @@ export default class GraphBody extends React.Component {
   }
 
   prepareData() {
+    let data = createSimpleArray(this.props.data)
+    let dataCut = groupByPassedTime()
     let d = [`M ${this.props.x} ${this.props.y}`];
     let multiplier = this.props.height/(this.props.max)
-    let collector = this.props.data.map(chunk => {
+    let collector = data.map(chunk => {
       let hour = this.timestampToTime(chunk.timestamp)
       let xNext = this.props.x + hour * this.props.length/25;
-      let yNext = this.props.y - chunk.cellphones.length * multiplier;
+      let yNext = this.props.y - chunk.amount_cellphones * multiplier;
       return `L ${xNext} ${yNext}`;
     });
 
