@@ -1,5 +1,4 @@
 import React from 'react';
-import findMax from '../findMax'
 
 export default class LegendY extends React.Component {
   prepareCords() {
@@ -22,7 +21,7 @@ export default class LegendY extends React.Component {
   }
 
   render() {
-    let maxValue = findMax(this.props.data)
+    let maxValue = this.props.max
     let coords = this.prepareCords();
     let yposition = [this.props.length/2-50,20]
     let yvalues =[maxValue/2,maxValue]

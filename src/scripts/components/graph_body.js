@@ -13,10 +13,11 @@ export default class GraphBody extends React.Component {
 
   prepareData() {
     let d = [`M ${this.props.x} ${this.props.y}`];
+    let multiplier = this.props.height/(this.props.max)
     let collector = this.props.data.map(chunk => {
       let hour = this.timestampToTime(chunk.timestamp)
       let xNext = this.props.x + hour * this.props.length/25;
-      let yNext = this.props.y - chunk.cellphones.length * this.props.multiplier_y;
+      let yNext = this.props.y - chunk.cellphones.length * multiplier;
       return `L ${xNext} ${yNext}`;
     });
 
