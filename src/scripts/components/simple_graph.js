@@ -3,6 +3,7 @@ import createSimpleArray from '../createSimpleArray'
 import groupByPassedTime from '../groupByPassedTime'
 import easyGroup from '../easyGroup'
 import findMax from '../findMax'
+import findMaxNew from '../findMaxNew'
 
 
 export default class SimpleGraph extends React.Component {
@@ -19,11 +20,11 @@ export default class SimpleGraph extends React.Component {
   prepareData() {
     // let data = createSimpleArray(this.props.data)
     let data = easyGroup(this.props.data)
-    // let max = findMax(data)
+    let max = findMaxNew(data)
     // console.log(max)
     // let dataCut = groupByPassedTime()
     let d = [`M ${this.props.x} ${this.props.y}`];
-    let multiplier = this.props.height/(this.props.max)
+    let multiplier = this.props.height/(max)
     let collector = data.map(chunk => {
       let hour = this.timestampToTime(chunk.timestamp)
       let xNext = this.props.x + hour * this.props.length/25;
