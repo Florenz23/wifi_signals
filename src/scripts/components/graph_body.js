@@ -25,7 +25,6 @@ export default class GraphBody extends React.Component {
 
   render() {
     let d = this.prepareData();
-    console.log(d)
     return(
       <path d={d}
         stroke="orange"

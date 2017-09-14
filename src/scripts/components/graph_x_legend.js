@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class Legend extends React.Component {
+export default class LegendY extends React.Component {
   prepareCords() {
     let coords = {
       x1: this.props.x,
@@ -26,7 +26,6 @@ export default class Legend extends React.Component {
     let times = [0,3,6,9,12,15,18,21,24]
     const color = "black"
     const corrector = 22
-    console.log(multiplicator)
     return (
       <g>
         <text x={coords.x1+times[0]*multiplicator-corrector} y={coords.y1} fill={color}>00:00</text>

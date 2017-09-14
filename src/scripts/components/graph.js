@@ -1,7 +1,8 @@
 import React from 'react';
 import Axis from './axis';
 import GraphBody from './graph_body';
-import Legend from './graph_x_legend';
+import LegendX from './graph_x_legend';
+import LegendY from './graph_y_legend';
 
 export default class Graph extends React.Component {
   static defaultProps = { width: 800, height: 600 };
@@ -10,24 +11,30 @@ export default class Graph extends React.Component {
     return (
       <svg width={this.props.width} height={this.props.height}>
         <Axis
-          x={20}
+          x={50}
           y={this.props.height - 100}
           length={this.props.width}
           horizontal={true}
         />
         <Axis
-          x={20}
+          x={50}
           y={0}
           length={this.props.height - 100}
           horizontal={false}
         />
-        <Legend
-          x={20}
+        <LegendX
+          x={0}
           y={this.props.height - 50}
           length={this.props.width}
         />
+        <LegendY
+          x={0}
+          y={0}
+          length={this.props.height}
+          data={this.props.data}
+        />
         <GraphBody
-          x={20}
+          x={50}
           y={this.props.height - 100}
           data={this.props.data}
           length={this.props.width}
