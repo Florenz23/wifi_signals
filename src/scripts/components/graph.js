@@ -2,6 +2,7 @@ import React from 'react';
 import Axis from './axis';
 import GraphBody from './graph_body';
 import SimpleGraph from './simple_graph';
+import IndividualMacs from './individual_macs';
 import LegendX from './graph_x_legend';
 import LegendY from './graph_y_legend';
 import findMax from '../findMax'
@@ -35,7 +36,7 @@ export default class Graph extends React.Component {
           length={this.props.height}
           max = {findMax(this.props.data)}
         />
-        <SimpleGraph
+        <IndividualMacs
           x={50}
           y={this.props.height - 100}
           data={this.props.data}

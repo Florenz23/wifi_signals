@@ -3,7 +3,6 @@ export default function easyGroup(data) {
   let groupedArray = groupArray(data)
   // console.log(groupedArray)
   let simpleArray = makeSimpleArray(groupedArray)
-  console.log(simpleArray)
   return simpleArray
 
 
