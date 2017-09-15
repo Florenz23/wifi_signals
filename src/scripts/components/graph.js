@@ -12,7 +12,7 @@ export default class Graph extends React.Component {
   static defaultProps = { width: 800, height: 600 };
   renderContent() {
     return (
-        <SimpleGraph
+        <IndividualMacs
           x={50}
           y={this.props.height - 100}
           data={this.props.data}

@@ -23,9 +23,7 @@ export default class IndividualMacs extends React.Component {
     // let dataCut = groupByPassedTime()
     let d = [`M ${this.props.x} ${this.props.y}`];
     let multiplier = this.props.height/(40)
-    let collector = data.map(chunk => {
-      console.log(chunk.cellphone[0].rssi)
-      console.log(chunk.timestamp)
+    let collector = data[1].map(chunk => {
       let hour = this.timestampToTime(chunk.timestamp)
       let xNext = this.props.x + hour * this.props.length/25;
       let yNext = this.props.y - (chunk.cellphone[0].rssi+100) * multiplier;
