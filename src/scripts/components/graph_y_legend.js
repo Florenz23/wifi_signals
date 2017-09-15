@@ -21,8 +21,8 @@ export default class LegendY extends React.Component {
   }
 
   render() {
-    // let maxValue = this.props.max
-    let maxValue = 100
+    let maxValue = this.props.max
+    // let maxValue = 100
     let coords = this.prepareCords();
     let yposition = [this.props.length/2-50,20]
     let yvalues =[maxValue/2,maxValue]

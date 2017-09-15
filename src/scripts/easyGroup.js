@@ -34,6 +34,7 @@ function makeAverage() {
 
 
 function groupArray(data) {
+  //change this
   const group_number = 10
   let new_array = []
   let object = {
