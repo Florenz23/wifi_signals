@@ -10,6 +10,18 @@ import findMax from '../findMax'
 
 export default class Graph extends React.Component {
   static defaultProps = { width: 800, height: 600 };
+  renderContent() {
+    return (
+        <IndividualMacs
+          x={50}
+          y={this.props.height - 100}
+          data={this.props.data}
+          length={this.props.width}
+          height={this.props.height - 100}
+          max = {findMax(this.props.data)}
+        />
+    )
+  }
   render() {
     return (
       <svg width={this.props.width} height={this.props.height}>
@@ -36,14 +48,7 @@ export default class Graph extends React.Component {
           length={this.props.height}
           max = {findMax(this.props.data)}
         />
-        <IndividualMacs
-          x={50}
-          y={this.props.height - 100}
-          data={this.props.data}
-          length={this.props.width}
-          height={this.props.height - 100}
-          max = {findMax(this.props.data)}
-        />
+        {this.renderContent()}
       </svg>
     )
   }

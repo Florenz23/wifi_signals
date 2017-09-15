@@ -19,7 +19,7 @@ function createUserEntryArray(data) {
   let obj = {}
   // for (let key1 in unique_macs) {
     for (let key in data) {
-      let search = data[key].cellphones.filter(function (cell) { return cell.mac == unique_macs[1] });
+      let search = data[key].cellphones.filter(function (cell) { return cell.mac == unique_macs[5] });
       if (search.length != 0) {
         obj = {"timestamp":data[key].timestamp, "cellphone" : search}
         userEntries.push(obj)
