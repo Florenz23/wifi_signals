@@ -11,12 +11,10 @@ function onlyUnique(value, index, self) {
 
 function createUserEntryArray(data) {
 
-  console.log(data)
   let userEntryArray = []
   let mac_ids = getAllMacIds(data)
   var unique_macs = mac_ids.filter( onlyUnique ); // returns ['a', 1, 2, '1']
   let userEntries = []
-  console.log(unique_macs)
   let obj = {}
   for (let key1 in unique_macs) {
     for (let key in data) {
@@ -37,8 +35,6 @@ function createUserEntryArray(data) {
     userEntryArray.push(userEntries)
     userEntries = []
   }
-  console.log(userEntries)
-  console.log(userEntryArray)
   return userEntryArray
 
 }
@@ -58,7 +54,6 @@ function getAllMacIds(data) {
 
   let newArray = []
   let obj = {}
-  console.log(data)
   for (let key in data) {
     for (let key1 in data[key].cellphones)
           newArray.push(data[key].cellphones[key1].mac)

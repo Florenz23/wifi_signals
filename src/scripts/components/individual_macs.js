@@ -17,11 +17,9 @@ export default class IndividualMacs extends React.Component {
     // let data = easyGroup(this.props.data)
     // let max = findMaxNew(data)
     // let dataCut = groupByPassedTime()
-    let data = this.props.data
-    console.log(data)
     let d = [`M ${this.props.x} ${this.props.y}`];
     let multiplier = this.props.height/(40)
-    let collector = data.map(chunk => {
+    let collector = this.props.data.map(chunk => {
       let hour = this.timestampToTime(chunk.timestamp)
       let xNext = this.props.x + hour * this.props.length/25;
       let yNext = this.props.y - (chunk.cellphone[0].rssi+100) * multiplier;

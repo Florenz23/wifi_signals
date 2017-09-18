@@ -7,12 +7,11 @@ import createUsersArray from '../createUsersArray'
 export default class AllMacs extends React.Component {
   render() {
     let data = createUsersArray(this.props.data)
-    console.log(data)
       return (
         <IndividualMacs
           x={this.props.x}
           y={this.props.y}
-          data={data[0]}
+          data={data[6]}
           length={this.props.length}
           height={this.props.height}
         />

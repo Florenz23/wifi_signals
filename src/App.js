@@ -22,7 +22,7 @@ export default class App extends React.Component {
           onChange={this.selectDataset.bind(this)} >
           {options}
         </select>
-        <Graph data={this.props.datasets[0]} viewSelection={this.state.dataSetIndex} />
+        <Graph data={this.props.datasets} viewSelection={this.state.dataSetIndex} />
       </div>
     )
   }
