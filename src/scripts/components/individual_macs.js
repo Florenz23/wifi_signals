@@ -1,7 +1,5 @@
 import React from 'react';
 import easyGroup from '../easyGroup'
-import findMaxNew from '../findMaxNew'
-import createUsersArray from '../createUsersArray'
 
 export default class IndividualMacs extends React.Component {
   static defaultProps = { multiplier_x: (33+1/3), multiplier_y:10 };
@@ -18,12 +16,12 @@ export default class IndividualMacs extends React.Component {
     // let data = createSimpleArray(this.props.data)
     // let data = easyGroup(this.props.data)
     // let max = findMaxNew(data)
-    let data = createUsersArray(this.props.data)
-    console.log(data)
     // let dataCut = groupByPassedTime()
+    let data = this.props.data
+    console.log(data)
     let d = [`M ${this.props.x} ${this.props.y}`];
     let multiplier = this.props.height/(40)
-    let collector = data[5].map(chunk => {
+    let collector = data.map(chunk => {
       let hour = this.timestampToTime(chunk.timestamp)
       let xNext = this.props.x + hour * this.props.length/25;
       let yNext = this.props.y - (chunk.cellphone[0].rssi+100) * multiplier;

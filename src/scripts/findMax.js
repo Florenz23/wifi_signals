@@ -2,9 +2,9 @@ export default function findMax(data){
 
   let max = Math.max.apply(null,
                         Object.keys(data).map(function(e) {
-                                return data[e].cellphones.length
+                                return data.cellphones.length
                         }));
-  let maxRssi = getMaxRssi(data)
+  // let maxRssi = getMaxRssi(data)
   return max
 }
 
