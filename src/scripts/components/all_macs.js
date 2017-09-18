@@ -11,7 +11,7 @@ export default class AllMacs extends React.Component {
         <IndividualMacs
           x={this.props.x}
           y={this.props.y}
-          data={data[6]}
+          data={data}
           length={this.props.length}
           height={this.props.height}
         />

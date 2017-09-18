@@ -12,14 +12,14 @@ export default class IndividualMacs extends React.Component {
       return new_time
   }
 
-  prepareData() {
+  prepareData(index) {
     // let data = createSimpleArray(this.props.data)
     // let data = easyGroup(this.props.data)
     // let max = findMaxNew(data)
     // let dataCut = groupByPassedTime()
     let d = [`M ${this.props.x} ${this.props.y}`];
     let multiplier = this.props.height/(40)
-    let collector = this.props.data.map(chunk => {
+    let collector = this.props.data[index].map(chunk => {
       let hour = this.timestampToTime(chunk.timestamp)
       let xNext = this.props.x + hour * this.props.length/25;
       let yNext = this.props.y - (chunk.cellphone[0].rssi+100) * multiplier;
@@ -30,13 +30,20 @@ export default class IndividualMacs extends React.Component {
   }
 
   render() {
-    let d = this.prepareData();
+    let d = this.prepareData(5);
     return(
+      <g>
       <path d={d}
         stroke="blue"
         strokeWidth={1}
         fill="none"
       />
+      <path d={this.prepareData(6)}
+        stroke="red"
+        strokeWidth={1}
+        fill="none"
+      />
+      </g>
     )
   }
 }
