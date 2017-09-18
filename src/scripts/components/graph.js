@@ -72,8 +72,6 @@ export default class Graph extends React.Component {
   }
   render() {
     return (
-      <div>
-      <div>{this.props.viewSelection}</div>
       <svg width={this.props.width} height={this.props.height}>
         <Axis
           x={50}
@@ -95,7 +93,6 @@ export default class Graph extends React.Component {
         {this.renderLegend()}
         {this.renderContent()}
       </svg>
-      </div>
     )
   }
 }

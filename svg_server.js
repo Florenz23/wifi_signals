@@ -6,8 +6,16 @@ var data = require('./src/data/big_data.json');
 
 var svgRenderer = require('./src/scripts/svg_renderer').default;
 
-app.get('/svg', function (req, res) {
-  var svg = svgRenderer(data[0]);
+app.get('/svg/0', function (req, res) {
+  var svg = svgRenderer(data[0],0);
+  res.send(svg);
+});
+app.get('/svg/1', function (req, res) {
+  var svg = svgRenderer(data[0],1);
+  res.send(svg);
+});
+app.get('/svg/2', function (req, res) {
+  var svg = svgRenderer(data[0],2);
   res.send(svg);
 });
 
