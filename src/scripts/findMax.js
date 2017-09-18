@@ -5,7 +5,6 @@ export default function findMax(data){
                                 return data[e].cellphones.length
                         }));
   let maxRssi = getMaxRssi(data)
-  console.log(max)
   return max
 }
 

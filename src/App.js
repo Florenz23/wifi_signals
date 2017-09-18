@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import Graph from './scripts/components/graph'
+var jsonData = require('json!./data/new_data.json');
 
 export default class App extends React.Component {
-  state = { dataSetIndex: 0 }
+  state = { dataSetIndex: 0 , }
+  static defaultProps = {views: [["day"],["simpleDay"],["Macs"]]}
 
   selectDataset(event) {
     this.setState({dataSetIndex: event.target.value});
   }
 
   render() {
-    let options = this.props.datasets.map((_, index) => {
-      return <option key={index} value={index}>Dataset {index + 1}</option>
+    let options = this.props.views.map((value, index) => {
+      return <option key={index} value={index}>Ansicht {value}</option>
     });
 
     return (
@@ -20,7 +22,7 @@ export default class App extends React.Component {
           onChange={this.selectDataset.bind(this)} >
           {options}
         </select>
-        <Graph data={this.props.datasets[this.state.dataSetIndex]} />
+        <Graph data={this.props.datasets[0]} viewSelection={this.state.dataSetIndex} />
       </div>
     )
   }

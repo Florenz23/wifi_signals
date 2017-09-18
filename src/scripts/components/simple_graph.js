@@ -18,9 +18,9 @@ export default class SimpleGraph extends React.Component {
   }
 
   prepareData() {
-    let data = createSimpleArray(this.props.data)
-    console.log(data)
-    // let data = easyGroup(this.props.data)
+    // let data = createSimpleArray(this.props.data)
+  console.log(data)
+  let data = easyGroup(this.props.data)
     let max = findMaxNew(data)
     // console.log(max)
     // let dataCut = groupByPassedTime()
