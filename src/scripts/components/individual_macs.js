@@ -48,7 +48,7 @@ export default class IndividualMacs extends React.Component {
   }
 }
 
-
+// https://stackoverflow.com/questions/22876978/loop-inside-react-jsx
 
 
 
