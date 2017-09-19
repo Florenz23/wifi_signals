@@ -32,7 +32,7 @@ export default class GraphBody extends React.Component {
     let d = this.prepareData();
     return(
       <path d={d}
-        stroke="orange"
+        stroke="red"
         strokeWidth={1}
         fill="none"
       />

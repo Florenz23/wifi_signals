@@ -40,7 +40,7 @@ export default class SimpleGraph extends React.Component {
     let d = this.prepareData();
     return(
       <path d={d}
-        stroke="orange"
+        stroke="blue"
         strokeWidth={1}
         fill="none"
       />
