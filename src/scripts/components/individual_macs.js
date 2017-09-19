@@ -1,5 +1,6 @@
 import React from 'react';
 import easyGroup from '../easyGroup'
+import randomColor from 'randomcolor'
 
 export default class IndividualMacs extends React.Component {
   static defaultProps = { multiplier_x: (33+1/3), multiplier_y:10 };
@@ -30,19 +31,20 @@ export default class IndividualMacs extends React.Component {
   }
 
   render() {
-    let d = this.prepareData(5);
+    let users = []
+    for (let i=0; i < this.props.data.length; i++){
+      users.push(
+        <path d={this.prepareData(i)}
+          key={`${i}key`}
+          stroke={randomColor()}
+          strokeWidth={1}
+          fill="none"
+        />
+      )
+    }
     return(
       <g>
-      <path d={d}
-        stroke="blue"
-        strokeWidth={1}
-        fill="none"
-      />
-      <path d={this.prepareData(6)}
-        stroke="red"
-        strokeWidth={1}
-        fill="none"
-      />
+      {users}
       </g>
     )
   }
