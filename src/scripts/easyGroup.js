@@ -1,10 +1,38 @@
 export default function easyGroup(data) {
 
   let groupedArray = groupArray(data)
-  // console.log(groupedArray)
+  console.log(groupedArray[0])
+  let cleanGroupedArray1 = cleanGroupedArray(groupedArray)
   let simpleArray = makeSimpleArray(groupedArray)
   return simpleArray
 
+
+}
+
+function cleanGroupedArray(array) {
+
+    let things = {}
+
+    let testArray = [
+      {"place" : "red", "room":"blue"},
+      {"place" : "re", "room":"blue"},
+      {"place" : "re", "room":"blue"},
+      {"place" : "red", "room":"blue"}
+    ]
+    things.thing = testArray
+
+    var obj = {};
+
+    for ( var i=0, len=things.thing.length; i < len; i++ ) {
+        obj[things.thing[i]['place']] = things.thing[i];
+    }
+
+    things.thing = new Array();
+    for ( var key in obj ) {
+        things.thing.push(obj[key]);
+    }
+    console.log(things)
+  return array
 
 }
 
