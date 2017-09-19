@@ -6,6 +6,8 @@ import AllMacs from './all_macs';
 import LegendX from './graph_x_legend';
 import LegendY from './graph_y_legend';
 import findMax from '../findMax'
+import easyGroup from '../easyGroup'
+import findMaxNew from '../findMaxNew'
 
 
 export default class Graph extends React.Component {
@@ -49,13 +51,25 @@ export default class Graph extends React.Component {
     }
   }
   renderLegend() {
-    if (this.props.viewSelection == 0 || this.props.viewSelection == 1) {
+    if (this.props.viewSelection == 0 ) {
       return (
         <LegendY
           x={0}
           y={0}
           length={this.props.height}
           max = {findMax(this.props.data)}
+        />
+      )
+    }
+    if (this.props.viewSelection == 1) {
+      let data = easyGroup(this.props.data)
+      let max = findMaxNew(data)
+      return (
+        <LegendY
+          x={0}
+          y={0}
+          length={this.props.height}
+          max = {max}
         />
       )
     }
