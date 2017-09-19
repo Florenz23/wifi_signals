@@ -33,10 +33,14 @@ export default class IndividualMacs extends React.Component {
   render() {
     let users = []
     for (let i=0; i < this.props.data.length; i++){
+    // for (let i=0; i < 5; i++){
+      let mac = this.props.data[i][0].cellphone[0].mac
+      mac = mac.split(':').join("");
+      mac = mac.substr(mac.length - 6);
       users.push(
         <path d={this.prepareData(i)}
           key={`${i}key`}
-          stroke={randomColor()}
+          stroke={`#${mac}`}
           strokeWidth={1}
           fill="none"
         />

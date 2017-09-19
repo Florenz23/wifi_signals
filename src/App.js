@@ -3,7 +3,7 @@ import Graph from './scripts/components/graph'
 var jsonData = require('json!./data/new_data.json');
 
 export default class App extends React.Component {
-  state = { dataSetIndex: 1 , }
+  state = { dataSetIndex: 2 , }
   static defaultProps = {views: [["day"],["simpleDay"],["Macs"]]}
 
   selectDataset(event) {
