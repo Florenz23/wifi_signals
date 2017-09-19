@@ -1,9 +1,8 @@
 export default function easyGroup(data) {
 
   let groupedArray = groupArray(data)
-  console.log(groupedArray[0])
   let cleanGroupedArray1 = cleanGroupedArray(groupedArray)
-  let simpleArray = makeSimpleArray(groupedArray)
+  let simpleArray = makeSimpleArray(cleanGroupedArray1)
   return simpleArray
 
 
@@ -11,28 +10,22 @@ export default function easyGroup(data) {
 
 function cleanGroupedArray(array) {
 
-    let things = {}
+    let new_array = []
+    for (var i = 0; i < array.length; i++) {
 
-    let testArray = [
-      {"place" : "red", "room":"blue"},
-      {"place" : "re", "room":"blue"},
-      {"place" : "re", "room":"blue"},
-      {"place" : "red", "room":"blue"}
-    ]
-    things.thing = testArray
+      let filteredArray = filterArray(array[i])
+      new_array.push(filteredArray)
 
-    var obj = {};
-
-    for ( var i=0, len=things.thing.length; i < len; i++ ) {
-        obj[things.thing[i]['place']] = things.thing[i];
     }
 
-    things.thing = new Array();
-    for ( var key in obj ) {
-        things.thing.push(obj[key]);
-    }
-    console.log(things)
-  return array
+    return new_array
+
+}
+
+function filterArray(array_elment) {
+
+    array_elment.cellphones = array_elment.cellphones.filter((cellphones, index, self) => self.findIndex((t) => {return t.mac === cellphones.mac; }) === index)
+    return array_elment
 
 }
 
