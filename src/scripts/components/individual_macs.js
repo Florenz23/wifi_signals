@@ -19,7 +19,7 @@ export default class IndividualMacs extends React.Component {
     // let max = findMaxNew(data)
     // let dataCut = groupByPassedTime()
     let d = [`M ${this.props.x} ${this.props.y}`];
-    let multiplier = this.props.height/(40)
+    let multiplier = this.props.height/(100)
     let collector = this.props.data[index].map(chunk => {
       let hour = this.timestampToTime(chunk.timestamp)
       let xNext = this.props.x + hour * this.props.length/25;
