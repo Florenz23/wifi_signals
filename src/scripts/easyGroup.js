@@ -1,14 +1,14 @@
 export default function easyGroup(data) {
 
   let groupedArray = groupArray(data)
-  let cleanGroupedArray1 = cleanGroupedArray(groupedArray)
-  let simpleArray = makeSimpleArray(cleanGroupedArray1)
+  let cleanGroupedArray = createCleanGroupedArray(groupedArray)
+  let simpleArray = makeSimpleArray(cleanGroupedArray)
   return simpleArray
 
 
 }
 
-function cleanGroupedArray(array) {
+function createCleanGroupedArray(array) {
 
     let new_array = []
     for (var i = 0; i < array.length; i++) {
