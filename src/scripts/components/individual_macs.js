@@ -9,7 +9,7 @@ export default class IndividualMacs extends React.Component {
       let date = new Date(timestamp *1000)
       const hour = date.getHours()
       const minutes = date.getMinutes()
-      const new_time = hour + minutes * 0.01
+      const new_time = hour + (minutes/60*100) * 0.01
       return new_time
   }
 
@@ -20,7 +20,7 @@ export default class IndividualMacs extends React.Component {
     // let dataCut = groupByPassedTime()
     let time_arr = []
     let d = [`M ${this.props.x} ${this.props.y}`];
-    let multiplier = this.props.height/(90)
+    let multiplier = this.props.height/(40)
     let check_arr = []
     let check_obj = {
       "time" : 10,
@@ -33,13 +33,11 @@ export default class IndividualMacs extends React.Component {
         check_obj.time = hour
         check_obj.rssi = chunk.cellphone[0].rssi
         check_arr.push(check_obj)
-        // console.log(check_obj)
       if (chunk.cellphone[0].rssi != -100) {
         // console.log(chunk.cellphone[0].mac)
       }
       return `L ${xNext} ${yNext}`;
     });
-    // console.log(check_arr)
 
     return d.concat(collector).join(' ');
   }
@@ -47,11 +45,11 @@ export default class IndividualMacs extends React.Component {
   render() {
     console.log(this.props.data.length)
     let users = []
-    // for (let i=0; i < this.pops.data.length; i++){
+    for (let i=0; i < this.props.data.length; i++){
     // console.log(this.props.data[4][0])
-    for (let i=0; i < 50; i++){
+    // for (let i=0; i < 3; i++){
       let mac = this.props.data[i][0].cellphone[0].mac
-      console.log(mac)
+      // console.log(mac)
       mac = mac.split(':').join("");
       mac = mac.substr(mac.length - 6);
       users.push(
