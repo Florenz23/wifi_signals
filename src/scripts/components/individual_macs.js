@@ -22,7 +22,6 @@ export default class IndividualMacs extends React.Component {
     let multiplier = this.props.height/(50)
     let collector = this.props.data[index].map(chunk => {
       let hour = this.timestampToTime(chunk.timestamp)
-      console.log(hour)
       let xNext = this.props.x + hour * this.props.length/25;
       let yNext = this.props.y - (chunk.cellphone[0].rssi+100) * multiplier;
       if (chunk.cellphone[0].rssi != -100) {
