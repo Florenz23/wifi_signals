@@ -79,7 +79,7 @@ export default class Graph extends React.Component {
           x={0}
           y={0}
           length={this.props.height}
-          max = {100}
+          max = {50}
         />
       )
     }

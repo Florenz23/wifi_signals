@@ -25,7 +25,7 @@ export default class LegendY extends React.Component {
     let multiplicator = this.props.length/25
     let times = [0,3,6,9,12,15,18,21,24]
     const color = "black"
-    const corrector = 22
+    const corrector = -30
     return (
       <g>
         <text x={coords.x1+times[0]*multiplicator-corrector} y={coords.y1} fill={color}>00:00</text>
@@ -36,7 +36,7 @@ export default class LegendY extends React.Component {
         <text x={coords.x1+times[5]*multiplicator-corrector} y={coords.y1} fill={color}>15:00</text>
         <text x={coords.x1+times[6]*multiplicator-corrector} y={coords.y1} fill={color}>18:00</text>
         <text x={coords.x1+times[7]*multiplicator-corrector} y={coords.y1} fill={color}>21:00</text>
-        <text x={coords.x1+times[8]*multiplicator-corrector} y={coords.y1} fill={color}>24:00</text>
+        <text x={coords.x1+times[8]*multiplicator-corrector-30} y={coords.y1} fill={color}>24:00</text>
       </g>
     )
   }
