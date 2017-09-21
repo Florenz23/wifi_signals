@@ -8,6 +8,7 @@ export default class IndividualMacs extends React.Component {
   timestampToTime(timestamp) {
       let date = new Date(timestamp *1000)
       const hour = date.getHours()
+      console.log(hour)
       const minutes = date.getMinutes()
       const new_time = hour + minutes * 0.01
       return new_time
@@ -19,11 +20,15 @@ export default class IndividualMacs extends React.Component {
     // let max = findMaxNew(data)
     // let dataCut = groupByPassedTime()
     let d = [`M ${this.props.x} ${this.props.y}`];
-    let multiplier = this.props.height/(100)
+    let multiplier = this.props.height/(30)
     let collector = this.props.data[index].map(chunk => {
       let hour = this.timestampToTime(chunk.timestamp)
       let xNext = this.props.x + hour * this.props.length/25;
       let yNext = this.props.y - (chunk.cellphone[0].rssi+100) * multiplier;
+      if (chunk.cellphone[0].rssi != -100) {
+        // console.log(chunk.cellphone[0].mac)
+        // console.log(hour)
+      }
       return `L ${xNext} ${yNext}`;
     });
 
@@ -33,7 +38,7 @@ export default class IndividualMacs extends React.Component {
   render() {
     let users = []
     for (let i=0; i < this.props.data.length; i++){
-    // for (let i=0; i < 5; i++){
+    // for (let i=1; i < 2; i++){
       let mac = this.props.data[i][0].cellphone[0].mac
       mac = mac.split(':').join("");
       mac = mac.substr(mac.length - 6);
