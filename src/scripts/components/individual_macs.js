@@ -18,27 +18,40 @@ export default class IndividualMacs extends React.Component {
     // let data = easyGroup(this.props.data)
     // let max = findMaxNew(data)
     // let dataCut = groupByPassedTime()
+    let time_arr = []
     let d = [`M ${this.props.x} ${this.props.y}`];
     let multiplier = this.props.height/(90)
+    let check_arr = []
+    let check_obj = {
+      "time" : 10,
+      "rssi" : 10
+    }
     let collector = this.props.data[index].map(chunk => {
       let hour = this.timestampToTime(chunk.timestamp)
-      let xNext = this.props.x + hour * this.props.length/25;
+      let xNext = this.props.x + hour * (this.props.length/24);
       let yNext = this.props.y - (chunk.cellphone[0].rssi+100) * multiplier;
+        check_obj.time = hour
+        check_obj.rssi = chunk.cellphone[0].rssi
+        check_arr.push(check_obj)
+        // console.log(check_obj)
       if (chunk.cellphone[0].rssi != -100) {
         // console.log(chunk.cellphone[0].mac)
-        // console.log(hour)
       }
       return `L ${xNext} ${yNext}`;
     });
+    // console.log(check_arr)
 
     return d.concat(collector).join(' ');
   }
 
   render() {
+    console.log(this.props.data.length)
     let users = []
-    for (let i=0; i < this.props.data.length; i++){
-    // for (let i=1; i < 2; i++){
+    // for (let i=0; i < this.pops.data.length; i++){
+    // console.log(this.props.data[4][0])
+    for (let i=0; i < 50; i++){
       let mac = this.props.data[i][0].cellphone[0].mac
+      console.log(mac)
       mac = mac.split(':').join("");
       mac = mac.substr(mac.length - 6);
       users.push(
