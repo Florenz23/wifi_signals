@@ -5,7 +5,7 @@ var app = express();
 var fs = require('fs');
 var ndjson = require('ndjson')
 
-var data = require('./src/data/data').default;
+// var data = require('./src/data/data').default;
 // let array = []
 // fs.createReadStream('./src/data/new_files/170920.json')
 //   .pipe(ndjson.parse())
@@ -16,9 +16,8 @@ var data = require('./src/data/data').default;
 //   })
 // data = array
 // console.log(data)
-// var data = require('./src/data/big_data.json');
+  var data = require('./src/data/new_files/170915.json');
 
-function start(app,data){
   var svgRenderer = require('./src/scripts/svg_renderer').default;
 
   app.get('/svg/0', function (req, res) {
@@ -39,4 +38,3 @@ function start(app,data){
     var port = server.address().port;
     console.log('Example app listening at http://%s:%s', host, port);
   });
-}
