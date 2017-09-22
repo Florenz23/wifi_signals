@@ -8,6 +8,7 @@ import LegendY from './graph_y_legend';
 import findMax from '../findMax'
 import easyGroup from '../easyGroup'
 import findMaxNew from '../findMaxNew'
+import findMaxRssi from '../findMaxRssi'
 
 
 export default class Graph extends React.Component {
@@ -45,7 +46,7 @@ export default class Graph extends React.Component {
             data={this.props.data}
             length={this.props.width}
             height={this.props.height - 100}
-            max = {findMax(this.props.data)}
+            max = {findMaxRssi(this.props.data)}
           />
       )
     }
@@ -79,7 +80,7 @@ export default class Graph extends React.Component {
           x={0}
           y={0}
           length={this.props.height}
-          max = {90}
+          max = {findMaxRssi(this.props.data)}
         />
       )
     }

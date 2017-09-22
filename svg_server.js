@@ -5,17 +5,17 @@ var app = express();
 var fs = require('fs');
 var ndjson = require('ndjson')
 
-// var data = require('./src/data/data').default;
-let array = []
-fs.createReadStream('./src/data/new_files/170920.json')
-  .pipe(ndjson.parse())
-  .on('data', function(obj) {
-    array.push[obj]
-    // obj is a javascript object
-    start(app,data)
-  })
-data = array
-console.log(data)
+var data = require('./src/data/data').default;
+// let array = []
+// fs.createReadStream('./src/data/new_files/170920.json')
+//   .pipe(ndjson.parse())
+//   .on('data', function(obj) {
+//     array.push[obj]
+//     // obj is a javascript object
+//     start(app,data)
+//   })
+// data = array
+// console.log(data)
 // var data = require('./src/data/big_data.json');
 
 function start(app,data){

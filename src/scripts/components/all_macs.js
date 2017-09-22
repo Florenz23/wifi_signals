@@ -14,6 +14,7 @@ export default class AllMacs extends React.Component {
           data={data}
           length={this.props.length}
           height={this.props.height}
+          max = {this.props.max}
         />
       )
   }

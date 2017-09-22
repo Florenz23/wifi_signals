@@ -20,7 +20,7 @@ export default class IndividualMacs extends React.Component {
     // let dataCut = groupByPassedTime()
     let time_arr = []
     let d = [`M ${this.props.x} ${this.props.y}`];
-    let multiplier = this.props.height/(40)
+    let multiplier = this.props.height/(this.props.max)
     let check_arr = []
     let check_obj = {
       "time" : 10,
