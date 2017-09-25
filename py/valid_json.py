@@ -1,9 +1,10 @@
+from __future__ import print_function  # Only needed for Python 2
 import json
+import glob
 
-readfile = 'test.json'
+readfile = '../src/data/new_files/170917.json'
 writefile = 'test_rdy.json'
 
-data = {"moin":"hi"}
 
 
 def compileFile(readfilename,writefilename):
@@ -22,17 +23,21 @@ def readFile(readfilename):
 	        new_array.append(line)
             print(line)
             print(line.strip())
-	print(new_array)
 	return new_array
 
 def writeFile(writefilename,data):
 	with open(writefilename, 'w') as outfile:
-	    json.dumps(data[0])
+		print("[",file=outfile)
+		i=0
+		for log in data:
+			i=i+1
+			print(log,file=outfile)
+			if i != len(data):
+				print(",",file=outfile)
+		print("]",file=outfile)
 
 def test():
-	print("moin")
 	array = [{"entry":"moin"},{"entry":"moin1"}]
-	print (array)
-	print json.dumps(array)
+	print(glob.glob("./*.json"))
 
-compileFile("test.json","test_rdy.json")
+compileFile(readfile,writefile)
