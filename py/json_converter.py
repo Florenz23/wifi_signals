@@ -3,6 +3,20 @@ import json
 import glob
 import os
 
+# Input Format:
+# {"key":"value"}
+# {"key":"value"}
+
+#Output Format:
+# [
+# {"key":"value"}
+# ,
+# {"key":"value"}
+# ]
+
+
+
+# change these values
 readFolder = '../src/data/new_files'
 writeFolder = './new_folder'
 
@@ -14,7 +28,6 @@ def compileFolder(readFolder,writeFolder):
 			readFile = '%s/%s' % (readFolder,fileName)
 			writeFile = '%s/%s' % (writeFolder,fileName)
 			compileFile(readFile,writeFile)
-	# compileFile(readfile,writefile,directoryName)
 	print(fileNames)
 
 
