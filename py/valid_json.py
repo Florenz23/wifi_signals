@@ -3,11 +3,6 @@ import json
 import glob
 import os
 
-readFolderPath = "./compiled_files"
-readfile = '../src/data/new_files/170917.json'
-directoryName = "compiled_files"
-writefile = './%s/test_rdy.json' % directoryName
-
 readFolder = '../src/data/new_files'
 writeFolder = './new_folder'
 
