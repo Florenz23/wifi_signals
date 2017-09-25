@@ -3,19 +3,30 @@ import json
 import glob
 import os
 
+readFolderPath = "./compiled_files"
 readfile = '../src/data/new_files/170917.json'
 directoryName = "compiled_files"
 writefile = './%s/test_rdy.json' % directoryName
 
+readFolder = '../src/data/new_files'
+writeFolder = './new_folder'
 
 
-def compileFile(readfilename,writefilename,directoryName):
+def compileFolder(readFolder,writeFolder):
+	createNewFolder(writeFolder)
+	fileNames = getFileNames(readFolder)
+	for fileName in fileNames:
+			readFile = '%s/%s' % (readFolder,fileName)
+			writeFile = '%s/%s' % (writeFolder,fileName)
+			compileFile(readFile,writeFile)
+	# compileFile(readfile,writefile,directoryName)
+	print(fileNames)
+
+
+def compileFile(readfilename,writefilename):
 
 	fileArray = readFile(readfilename)
-	print(fileArray)
 	writeFile(writefilename,fileArray)
-	createNewFolder(directoryName)
-	test()
 
 
 def readFile(readfilename):
@@ -43,8 +54,12 @@ def createNewFolder(folderpath):
 	if not os.path.exists(folderpath):
 		os.makedirs(folderpath)
 
-def test():
-	array = [{"entry":"moin"},{"entry":"moin1"}]
-	print(glob.glob("./*.json"))
+def getFileNames(path):
+	text_files = [f for f in os.listdir(path) if f.endswith('.json')]
+	return text_files
 
-compileFile(readfile,writefile,directoryName)
+
+def test():
+	print("moin")
+
+compileFolder(readFolder,writeFolder)
