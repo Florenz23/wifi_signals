@@ -1,17 +1,20 @@
 from __future__ import print_function  # Only needed for Python 2
 import json
 import glob
+import os
 
 readfile = '../src/data/new_files/170917.json'
-writefile = 'test_rdy.json'
+directoryName = "compiled_files"
+writefile = './%s/test_rdy.json' % directoryName
 
 
 
-def compileFile(readfilename,writefilename):
+def compileFile(readfilename,writefilename,directoryName):
 
 	fileArray = readFile(readfilename)
 	print(fileArray)
 	writeFile(writefilename,fileArray)
+	createNewFolder(directoryName)
 	test()
 
 
@@ -36,8 +39,12 @@ def writeFile(writefilename,data):
 				print(",",file=outfile)
 		print("]",file=outfile)
 
+def createNewFolder(folderpath):
+	if not os.path.exists(folderpath):
+		os.makedirs(folderpath)
+
 def test():
 	array = [{"entry":"moin"},{"entry":"moin1"}]
 	print(glob.glob("./*.json"))
 
-compileFile(readfile,writefile)
+compileFile(readfile,writefile,directoryName)
