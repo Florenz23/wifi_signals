@@ -9,7 +9,9 @@ data = {"moin":"hi"}
 def compileFile(readfilename,writefilename):
 
 	fileArray = readFile(readfilename)
+	print(fileArray)
 	writeFile(writefilename,fileArray)
+	test()
 
 
 def readFile(readfilename):
@@ -17,11 +19,20 @@ def readFile(readfilename):
 	    new_array = []
 	    for line in fd:
 	        line = line.strip()
-	        new_array.append(line.strip()	)
+	        new_array.append(line)
+            print(line)
+            print(line.strip())
+	print(new_array)
 	return new_array
 
 def writeFile(writefilename,data):
 	with open(writefilename, 'w') as outfile:
-	    json.dump(data, outfile)
+	    json.dumps(data[0])
+
+def test():
+	print("moin")
+	array = [{"entry":"moin"},{"entry":"moin1"}]
+	print (array)
+	print json.dumps(array)
 
 compileFile("test.json","test_rdy.json")
