@@ -4,7 +4,7 @@ import randomColor from 'randomcolor'
 import createUsersArray from '../functions/createUsersArray'
 
 
-export default class IndividualMacs extends React.Component {
+export default class DisplayDayByUsers extends React.Component {
   static defaultProps = { multiplier_x: (33+1/3), multiplier_y:10 };
 
   timestampToTime(timestamp) {
