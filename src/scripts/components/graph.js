@@ -5,10 +5,10 @@ import SimpleGraph from './simple_graph';
 import AllMacs from './all_macs';
 import LegendX from './graph_x_legend';
 import LegendY from './graph_y_legend';
-import findMax from '../findMax'
-import easyGroup from '../easyGroup'
-import findMaxNew from '../findMaxNew'
-import findMaxRssi from '../findMaxRssi'
+import findMax from '../functions/findMax'
+import easyGroup from '../functions/easyGroup'
+import findMaxNew from '../functions/findMaxNew'
+import findMaxRssi from '../functions/findMaxRssi'
 
 
 export default class Graph extends React.Component {

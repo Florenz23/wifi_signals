@@ -1,5 +1,5 @@
 import React from 'react';
-import easyGroup from '../easyGroup'
+import easyGroup from '../functions/easyGroup'
 import randomColor from 'randomcolor'
 
 export default class IndividualMacs extends React.Component {

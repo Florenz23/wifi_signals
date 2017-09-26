@@ -1,6 +1,6 @@
 import React from 'react';
 import IndividualMacs from './individual_macs';
-import createUsersArray from '../createUsersArray'
+import createUsersArray from '../functions/createUsersArray'
 
 
 

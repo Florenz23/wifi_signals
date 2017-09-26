@@ -1,5 +1,5 @@
 import React from 'react';
-import createSimpleArray from '../createSimpleArray'
+import createSimpleArray from '../functions/createSimpleArray'
 // import groupByPassedTime from '../groupByPassedTime'
 
 export default class GraphBody extends React.Component {

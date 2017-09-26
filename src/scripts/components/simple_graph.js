@@ -1,9 +1,9 @@
 import React from 'react';
-import createSimpleArray from '../createSimpleArray'
-import groupByPassedTime from '../groupByPassedTime'
-import easyGroup from '../easyGroup'
-import findMax from '../findMax'
-import findMaxNew from '../findMaxNew'
+import createSimpleArray from '../functions/createSimpleArray'
+import groupByPassedTime from '../functions/groupByPassedTime'
+import easyGroup from '../functions/easyGroup'
+import findMax from '../functions/findMax'
+import findMaxNew from '../functions/findMaxNew'
 
 
 export default class SimpleGraph extends React.Component {
