@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Graph from './scripts/components/graph'
-var jsonData = require('json!./data/new_data.json');
 
 export default class App extends React.Component {
   state = { dataSetIndex: 0 , }

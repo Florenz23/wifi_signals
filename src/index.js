@@ -7,9 +7,13 @@ import App from './App';
 // var jsonData = require('json!./data/new_data.json');
 // var jsonData = require('json!./data/3entries_macs.json');
 // var jsonData = require('json!./data/new_files/170912_a.json');
-var jsonData = require('json!./data/new_files/170915.json');
+// var jsonData = require('json!./data/new_files/170915.json');
 // var jsonData = require('json!./data/big_data.json');
 // var jsonData = require('json!./data/data_mac.json');
 
+
+
+// change file here
+var jsonData = require('json!../py/new_folder/170916.json');
 
 ReactDOM.render(<App datasets={jsonData}/>, document.getElementById('root'));

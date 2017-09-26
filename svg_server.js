@@ -16,6 +16,8 @@ var ndjson = require('ndjson')
 //   })
 // data = array
 // console.log(data)
+
+//change file here
   var data = require('./src/data/new_files/170915.json');
 
   var svgRenderer = require('./src/scripts/svg_renderer').default;
