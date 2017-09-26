@@ -1,6 +1,8 @@
 import React from 'react';
 import easyGroup from '../functions/easyGroup'
 import randomColor from 'randomcolor'
+import createUsersArray from '../functions/createUsersArray'
+
 
 export default class IndividualMacs extends React.Component {
   static defaultProps = { multiplier_x: (33+1/3), multiplier_y:10 };
@@ -13,7 +15,7 @@ export default class IndividualMacs extends React.Component {
       return new_time
   }
 
-  prepareData(index) {
+  prepareData(index,data) {
     // let data = createSimpleArray(this.props.data)
     // let data = easyGroup(this.props.data)
     // let max = findMaxNew(data)
@@ -26,7 +28,7 @@ export default class IndividualMacs extends React.Component {
       "time" : 10,
       "rssi" : 10
     }
-    let collector = this.props.data[index].map(chunk => {
+    let collector = data[index].map(chunk => {
       let hour = this.timestampToTime(chunk.timestamp)
       let xNext = this.props.x + hour * (this.props.length/24);
       let yNext = this.props.y - (chunk.cellphone[0].rssi+100) * multiplier;
@@ -43,17 +45,17 @@ export default class IndividualMacs extends React.Component {
   }
 
   render() {
-    console.log(this.props.data.length)
+    let data = createUsersArray(this.props.data)
     let users = []
-    for (let i=0; i < this.props.data.length; i++){
+    for (let i=0; i < data.length; i++){
     // console.log(this.props.data[4][0])
     // for (let i=0; i < 3; i++){
-      let mac = this.props.data[i][0].cellphone[0].mac
+      let mac = data[i][0].cellphone[0].mac
       // console.log(mac)
       mac = mac.split(':').join("");
       mac = mac.substr(mac.length - 6);
       users.push(
-        <path d={this.prepareData(i)}
+        <path d={this.prepareData(i,data)}
           key={`${i}key`}
           stroke={`#${mac}`}
           strokeWidth={1}

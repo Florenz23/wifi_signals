@@ -2,7 +2,7 @@ import React from 'react';
 import Axis from './axis';
 import DisplayDay from './DisplayDay';
 import DisplayDaySimple from './DisplayDaySimple';
-import AllMacs from './all_macs';
+import IndividualMacs from './individual_macs';
 import LegendX from './graph_x_legend';
 import LegendY from './graph_y_legend';
 import findMax from '../functions/findMax'
@@ -40,7 +40,7 @@ export default class Graph extends React.Component {
     }
     if (this.props.viewSelection == 2) {
       return (
-          <AllMacs
+          <IndividualMacs
             x={50}
             y={this.props.height - 100}
             data={this.props.data}
