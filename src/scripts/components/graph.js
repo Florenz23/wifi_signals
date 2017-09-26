@@ -1,6 +1,6 @@
 import React from 'react';
 import Axis from './axis';
-import GraphBody from './graph_body';
+import DisplayDay from './DisplayDay';
 import SimpleGraph from './simple_graph';
 import AllMacs from './all_macs';
 import LegendX from './graph_x_legend';
@@ -16,7 +16,7 @@ export default class Graph extends React.Component {
   renderContent() {
     if (this.props.viewSelection == 0) {
       return (
-          <GraphBody
+          <DisplayDay
             x={50}
             y={this.props.height - 100}
             data={this.props.data}

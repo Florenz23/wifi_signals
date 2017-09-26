@@ -2,7 +2,7 @@ import React from 'react';
 import createSimpleArray from '../functions/createSimpleArray'
 // import groupByPassedTime from '../groupByPassedTime'
 
-export default class GraphBody extends React.Component {
+export default class DisplayDay extends React.Component {
   static defaultProps = { multiplier_x: (33+1/3), multiplier_y:10 };
 
   timestampToTime(timestamp) {
