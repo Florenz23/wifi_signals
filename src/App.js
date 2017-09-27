@@ -10,7 +10,8 @@ export default class App extends React.Component {
     this.setState({dataSetIndex: event.target.value});
   }
   getData(allData) {
-    let zoomData = zoomPeriod(allData,5,10)
+    let zoomData = zoomPeriod(allData,12,2)
+    console.log(zoomData)
     return zoomData
   }
 
