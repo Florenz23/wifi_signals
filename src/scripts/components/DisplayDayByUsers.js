@@ -23,7 +23,7 @@ export default class DisplayDayByUsers extends React.Component {
     }
     let collector = data[index].map(chunk => {
       let hour = timestampToTime(chunk.timestamp)
-      let xNext = this.props.x + hour * (this.props.length/24);
+      let xNext = this.props.x + hour * (this.props.length/this.props.x_max);
       let yNext = this.props.y - (chunk.cellphone[0].rssi+100) * multiplier;
         check_obj.time = hour
         check_obj.rssi = chunk.cellphone[0].rssi

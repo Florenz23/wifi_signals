@@ -20,7 +20,7 @@ export default class DisplayDaySimple extends React.Component {
     let multiplier = this.props.height/(max)
     let collector = data.map(chunk => {
       let hour = timestampToTime(chunk.timestamp)
-      let xNext = this.props.x + hour * this.props.length/25;
+      let xNext = this.props.x + hour * this.props.length/this.props.x_max;
       let yNext = this.props.y - chunk.amount_cellphones * multiplier;
       return `L ${xNext} ${yNext}`;
     });

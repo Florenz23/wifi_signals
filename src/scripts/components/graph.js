@@ -9,11 +9,17 @@ import findMax from '../functions/findMax'
 import easyGroup from '../functions/easyGroup'
 import findMaxNew from '../functions/findMaxNew'
 import findMaxRssi from '../functions/findMaxRssi'
+import timestampToTime from '../functions/timestampToTime'
 
 
 export default class Graph extends React.Component {
   static defaultProps = { width: 800, height: 600 };
-  renderContent() {
+  getLastTime() {
+    let timestamp = this.props.data[this.props.data.length-1].timestamp
+    let hour = timestampToTime(timestamp)
+    return hour
+  }
+  renderContent(lastTime) {
     if (this.props.viewSelection == 0) {
       return (
           <DisplayDay
@@ -23,6 +29,7 @@ export default class Graph extends React.Component {
             length={this.props.width}
             height={this.props.height - 100}
             max = {findMax(this.props.data)}
+            x_max = {lastTime}
           />
       )
     }
@@ -35,6 +42,7 @@ export default class Graph extends React.Component {
             length={this.props.width}
             height={this.props.height - 100}
             max = {findMax(this.props.data)}
+            x_max = {lastTime}
           />
       )
     }
@@ -47,6 +55,7 @@ export default class Graph extends React.Component {
             length={this.props.width}
             height={this.props.height - 100}
             max = {findMaxRssi(this.props.data)}
+            x_max = {lastTime}
           />
       )
     }
@@ -86,6 +95,7 @@ export default class Graph extends React.Component {
     }
   }
   render() {
+    let lastTime = this.getLastTime()
     return (
       <svg width={this.props.width} height={this.props.height}>
         <Axis
@@ -104,9 +114,10 @@ export default class Graph extends React.Component {
           x={0}
           y={this.props.height - 50}
           length={this.props.width}
+          x_max={lastTime}
         />
-        {this.renderLegend()}
-        {this.renderContent()}
+        {this.renderLegend(lastTime)}
+        {this.renderContent(lastTime)}
       </svg>
     )
   }

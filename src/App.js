@@ -11,7 +11,6 @@ export default class App extends React.Component {
   }
   getData(allData) {
     let zoomData = zoomPeriod(allData,5,10)
-    console.log(zoomData)
     return zoomData
   }
 
