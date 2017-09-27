@@ -1,17 +1,10 @@
 import React from 'react';
 import createSimpleArray from '../functions/createSimpleArray'
+import timestampToTime from '../functions/timestampToTime'
 // import groupByPassedTime from '../groupByPassedTime'
 
 export default class DisplayDay extends React.Component {
   static defaultProps = { multiplier_x: (33+1/3), multiplier_y:10 };
-
-  timestampToTime(timestamp) {
-      let date = new Date(timestamp *1000)
-      const hour = date.getHours()
-      const minutes = date.getMinutes()
-      const new_time = hour + (minutes/60*100) * 0.01
-      return new_time
-  }
 
   prepareData() {
     let data = createSimpleArray(this.props.data)
@@ -19,7 +12,7 @@ export default class DisplayDay extends React.Component {
     let d = [`M ${this.props.x} ${this.props.y}`];
     let multiplier = this.props.height/(this.props.max)
     let collector = data.map(chunk => {
-      let hour = this.timestampToTime(chunk.timestamp)
+      let hour = timestampToTime(chunk.timestamp)
       let xNext = this.props.x + hour * this.props.length/25;
       let yNext = this.props.y - chunk.amount_cellphones * multiplier;
       return `L ${xNext} ${yNext}`;

@@ -2,18 +2,11 @@ import React from 'react';
 import easyGroup from '../functions/easyGroup'
 import randomColor from 'randomcolor'
 import createUsersArray from '../functions/createUsersArray'
+import timestampToTime from '../functions/timestampToTime'
 
 
 export default class DisplayDayByUsers extends React.Component {
   static defaultProps = { multiplier_x: (33+1/3), multiplier_y:10 };
-
-  timestampToTime(timestamp) {
-      let date = new Date(timestamp *1000)
-      const hour = date.getHours()
-      const minutes = date.getMinutes()
-      const new_time = hour + (minutes/60*100) * 0.01
-      return new_time
-  }
 
   prepareData(index,data) {
     // let data = createSimpleArray(this.props.data)
@@ -29,7 +22,7 @@ export default class DisplayDayByUsers extends React.Component {
       "rssi" : 10
     }
     let collector = data[index].map(chunk => {
-      let hour = this.timestampToTime(chunk.timestamp)
+      let hour = timestampToTime(chunk.timestamp)
       let xNext = this.props.x + hour * (this.props.length/24);
       let yNext = this.props.y - (chunk.cellphone[0].rssi+100) * multiplier;
         check_obj.time = hour
