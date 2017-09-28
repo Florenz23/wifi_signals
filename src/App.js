@@ -10,14 +10,14 @@ export default class App extends React.Component {
     this.setState({dataSetIndex: event.target.value});
   }
   getData(allData) {
-    let zoomData = zoomPeriod(allData,12,2)
+    let zoomData = zoomPeriod(allData,10,4)
     console.log(zoomData)
     return zoomData
   }
 
   render() {
-    let options = this.props.views.map((value, index) => {
-      return <option key={index} value={index}>Ansicht {value}</option>
+    let options_view = this.props.views.map((value, index) => {
+      return <option key={index} value={index}>View {value}</option>
     });
     let data = this.getData(this.props.datasets)
 
@@ -26,7 +26,7 @@ export default class App extends React.Component {
         <select
           value={this.state.dataSetIndex}
           onChange={this.selectDataset.bind(this)} >
-          {options}
+          {options_view}
         </select>
         <Graph data={data} viewSelection={this.state.dataSetIndex} />
       </div>

@@ -24,8 +24,10 @@ function getIndexOfTime(data, time) {
 }
 
 function cutArray(data,from,to) {
-  let cutOfLimit = from + to
+  let cutOfLimit = parseInt(from) + parseInt(to)
   if (cutOfLimit > data.length) {
+      console.log(from,to)
+      console.log("jojo")
       cutOfLimit = data.length
   }
   let newArray = []
