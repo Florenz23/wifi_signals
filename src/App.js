@@ -3,10 +3,10 @@ import Graph from './scripts/components/graph'
 import zoomPeriod from './scripts/functions/zoom/zoomPeriod'
 
 export default class App extends React.Component {
-  state = { dataSetIndex: 2 , timeSetIndex:0}
+  state = { dataSetIndex: 0 , timeSetIndex:0 }
   static defaultProps = {
       views: [["day"],["simpleDay"],["Macs"]],
-      times: [[10],[12],[14]]
+      times: [["day"],[0],[2],[4],[6],[8],[12],[14],[16],[18],[20],[22],[24]]
     }
 
   selectDataset(event) {
@@ -15,9 +15,16 @@ export default class App extends React.Component {
   selectTime(event) {
     this.setState({timeSetIndex: event.target.value});
   }
-  getData(allData,hour) {
-    console.log(hour)
-    let zoomData = zoomPeriod(allData,hour,4)
+  getData(allData,time) {
+    let display_hours = 2
+    let start_time = time
+      console.log(time)
+    if (time == "day") {
+      console.log("moin")
+      display_hours = 2
+      start_time = 0
+    }
+    let zoomData = zoomPeriod(allData,start_time,display_hours)
     console.log(zoomData)
     return zoomData
   }
