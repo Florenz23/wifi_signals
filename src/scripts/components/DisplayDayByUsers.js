@@ -13,6 +13,8 @@ export default class DisplayDayByUsers extends React.Component {
     // let data = easyGroup(this.props.data)
     // let max = findMaxNew(data)
     // let dataCut = groupByPassedTime()
+    let first_timestamp = this.props.data[0].timestamp
+    let first_time = timestampToTime(first_timestamp)
     let time_arr = []
     let d = [`M ${this.props.x} ${this.props.y}`];
     let multiplier = this.props.height/(this.props.max)
@@ -23,7 +25,7 @@ export default class DisplayDayByUsers extends React.Component {
     }
     let collector = data[index].map(chunk => {
       let hour = timestampToTime(chunk.timestamp)
-      let xNext = this.props.x + hour * (this.props.length/this.props.x_max);
+      let xNext = this.props.x + (hour-first_time) * (this.props.length/(this.props.x_max-first_time));
       let yNext = this.props.y - (chunk.cellphone[0].rssi+100) * multiplier;
         check_obj.time = hour
         check_obj.rssi = chunk.cellphone[0].rssi

@@ -3,7 +3,7 @@ import Graph from './scripts/components/graph'
 import zoomPeriod from './scripts/functions/zoom/zoomPeriod'
 
 export default class App extends React.Component {
-  state = { dataSetIndex: 0 , timeSetIndex:2 }
+  state = { dataSetIndex: 0 , timeSetIndex:0 }
   static defaultProps = {
       views: [["day"],["simpleDay"],["Macs"]],
       times: [["day"],[0],[2],[4],[6],[8],[10],[12],[14],[16],[18],[20],[22],[24]]
