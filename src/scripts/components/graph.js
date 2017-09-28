@@ -115,6 +115,7 @@ export default class Graph extends React.Component {
           y={this.props.height - 50}
           length={this.props.width}
           x_max={lastTime}
+          data={this.props.data}
         />
         {this.renderLegend(lastTime)}
         {this.renderContent(lastTime)}
