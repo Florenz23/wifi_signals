@@ -1,10 +1,8 @@
 export default function zoomPeriod(data,time,hours) {
   if( time) {
     let keyOfGivenTime = getIndexOfTime(data,time)
-    console.log(keyOfGivenTime)
     let numberOfTimestamps = hours * 60 / 2
     let newArray = cutArray(data,keyOfGivenTime,numberOfTimestamps)
-    console.log(keyOfGivenTime)
     return newArray
   } else {
     console.log("moin")
@@ -26,8 +24,6 @@ function getIndexOfTime(data, time) {
 function cutArray(data,from,to) {
   let cutOfLimit = parseInt(from) + parseInt(to)
   if (cutOfLimit > data.length) {
-      console.log(from,to)
-      console.log("jojo")
       cutOfLimit = data.length
   }
   let newArray = []
