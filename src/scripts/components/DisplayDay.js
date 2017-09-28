@@ -8,12 +8,14 @@ export default class DisplayDay extends React.Component {
 
   prepareData() {
     let data = createSimpleArray(this.props.data)
+    let first_timestamp = this.props.data[0].timestamp
+    let first_time = timestampToTime(first_timestamp)
     // let dataCut = groupByPassedTime()
     let d = [`M ${this.props.x} ${this.props.y}`];
     let multiplier = this.props.height/(this.props.max)
     let collector = data.map(chunk => {
       let hour = timestampToTime(chunk.timestamp)
-      let xNext = this.props.x + hour * this.props.length/this.props.x_max;
+      let xNext = this.props.x + (hour-first_time) * this.props.length/(this.props.x_max-first_time);
       let yNext = this.props.y - chunk.amount_cellphones * multiplier;
       return `L ${xNext} ${yNext}`;
     });
