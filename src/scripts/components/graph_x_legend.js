@@ -9,9 +9,6 @@ export default class LegendY extends React.Component {
 
     coords.x2 = coords.x1 + this.props.length;
     coords.y2 = coords.y1;
-      for (var i = 0; i<10; i=i+30){
-      }
-
     return coords;
   }
 
@@ -28,25 +25,26 @@ export default class LegendY extends React.Component {
   render() {
     let coords = this.prepareCords();
     let time_max = this.props.x_max
-    let multiplicator = this.props.length/time_max
+    let multiplicator = this.props.length/9
+    console.log(multiplicator)
     let times = [0,3,6,9,12,15,18,21,24]
     console.log(time_max)
 
 
 
     const color = "black"
-    const corrector = -30
+    const corrector = 0
     return (
       <g>
-        <text x={coords.x1+time_max/9*multiplicator-corrector} y={coords.y1} fill={color}>{this.makeTime(time_max,9)}</text>
-        <text x={coords.x1+time_max/8*multiplicator-corrector} y={coords.y1} fill={color}>{this.makeTime(time_max,8)}</text>
-        <text x={coords.x1+time_max/7*multiplicator-corrector} y={coords.y1} fill={color}>{this.makeTime(time_max,8)}</text>
-        <text x={coords.x1+time_max/5*multiplicator-corrector} y={coords.y1} fill={color}>{this.makeTime(time_max,8)}</text>
-        <text x={coords.x1+time_max/4*multiplicator-corrector} y={coords.y1} fill={color}>{this.makeTime(time_max,8)}</text>
-        <text x={coords.x1+time_max/3*multiplicator-corrector} y={coords.y1} fill={color}>{this.makeTime(time_max,8)}</text>
-        <text x={coords.x1+time_max/2*multiplicator-corrector} y={coords.y1} fill={color}>{this.makeTime(time_max,8)}</text>
-        <text x={coords.x1+time_max/24*multiplicator-corrector} y={coords.y1} fill={color}>{this.makeTime(time_max,8)}</text>
-        <text x={coords.x1+time_max/12*multiplicator-corrector} y={coords.y1} fill={color}>{this.makeTime(time_max,8)}</text>
+        <text x={coords.x1+1*multiplicator-corrector} y={coords.y1} fill={color}>{this.makeTime(time_max,9)}</text>
+        <text x={coords.x1+2*multiplicator-corrector} y={coords.y1} fill={color}>{this.makeTime(time_max,8)}</text>
+        <text x={coords.x1+3*multiplicator-corrector} y={coords.y1} fill={color}>{this.makeTime(time_max,7)}</text>
+        <text x={coords.x1+4*multiplicator-corrector} y={coords.y1} fill={color}>{this.makeTime(time_max,6)}</text>
+        <text x={coords.x1+5*multiplicator-corrector} y={coords.y1} fill={color}>{this.makeTime(time_max,5)}</text>
+        <text x={coords.x1+6*multiplicator-corrector} y={coords.y1} fill={color}>{this.makeTime(time_max,4)}</text>
+        <text x={coords.x1+7*multiplicator-corrector} y={coords.y1} fill={color}>{this.makeTime(time_max,3)}</text>
+        <text x={coords.x1+8*multiplicator-corrector} y={coords.y1} fill={color}>{this.makeTime(time_max,2)}</text>
+        <text x={coords.x1+9*multiplicator-corrector} y={coords.y1} fill={color}>{this.makeTime(time_max,1)}</text>
       </g>
     )
   }
