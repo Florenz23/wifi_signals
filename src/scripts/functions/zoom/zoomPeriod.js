@@ -1,7 +1,8 @@
 export default function zoomPeriod(data,time,display_timestamps) {
-  console.log(display_timestamps)
-  if( time) {
+  console.log(time)
+  if( time || time == 0) {
     let keyOfGivenTime = getIndexOfTime(data,time)
+    console.log(keyOfGivenTime)
     let numberOfTimestamps = display_timestamps
     let newArray = cutArray(data,keyOfGivenTime,numberOfTimestamps)
     return newArray
@@ -12,6 +13,10 @@ export default function zoomPeriod(data,time,display_timestamps) {
 }
 
 function getIndexOfTime(data, time) {
+  if (!time){
+    console.log("moin")
+    return 0
+  }
   for (let key in data){
     let timestamp = data[key].timestamp
     let date = new Date(timestamp *1000)

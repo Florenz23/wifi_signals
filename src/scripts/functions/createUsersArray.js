@@ -20,7 +20,7 @@ function createUserEntryArray(data) {
     for (let key in data) {
       let search = data[key].cellphones.filter(function (cell) { return cell.mac == unique_macs[key1] });
       // let search = data[key].cellphones.filter(function (cell) { return cell.mac == unique_macs[100] });
-      if (search.length != 0) {
+      if (search.length != 0 && search[0].rssi > -85) {
       obj = {"timestamp":data[key].timestamp, "cellphone" : search}
         userEntries.push(obj)
       } else {
