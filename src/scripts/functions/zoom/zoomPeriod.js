@@ -1,7 +1,8 @@
-export default function zoomPeriod(data,time,hours) {
+export default function zoomPeriod(data,time,display_timestamps) {
+  console.log(display_timestamps)
   if( time) {
     let keyOfGivenTime = getIndexOfTime(data,time)
-    let numberOfTimestamps = hours * 60 / 2
+    let numberOfTimestamps = display_timestamps
     let newArray = cutArray(data,keyOfGivenTime,numberOfTimestamps)
     return newArray
   } else {
