@@ -14,7 +14,7 @@ export default class DisplayDaySimple extends React.Component {
     // let data = createSimpleArray(this.props.data)
   let data = easyGroup(this.props.data)
     let max = findMaxNew(data)
-    let first_timestamp = this.props.data[0].timestamp
+    let first_timestamp = data[0].timestamp
     let first_time = timestampToTime(first_timestamp)
     // console.log(max)
     // let dataCut = groupByPassedTime()
