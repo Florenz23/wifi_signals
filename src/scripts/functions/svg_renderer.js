@@ -5,7 +5,7 @@ import Graph from '../components/graph'
 export default function(data,version,time,period) {
 
   return ReactDOMServer.renderToStaticMarkup(<Graph
-    data={data}
+    sendData={data}
     viewSelection={version}
     timeSelection={time}
     timestampSelection={period}

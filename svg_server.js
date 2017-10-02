@@ -21,7 +21,7 @@ var request = require('request');
 //change file here
   var data = require('./src/data/new_files/170915.json');
 
-  // var svgRenderer = require('./src/scripts/functions/svg_renderer').default;
+  var svgRenderer = require('./src/scripts/functions/svg_renderer').default;
   //
   // app.get('/svg/0', function (req, res) {
   //   var svg = svgRenderer(data,0);
@@ -36,9 +36,12 @@ var request = require('request');
   //   res.send(svg);
   // });
   app.get('/', function(req, res){
-    console.log(req.query.time)
-    console.log(req.query.moin)
-    res.send('time: ' + req.query.time);
+    let view = req.query.view
+    let time = req.query.time
+    let period = req.query.period
+    console.log(view,time,period)
+    var svg = svgRenderer(data,view,time,period);
+    res.send(svg);
   });
 
 
@@ -46,36 +49,4 @@ var request = require('request');
     var host = server.address().address;
     var port = server.address().port;
     console.log('Example app listening at http://%s:%s', host, port);
-    // let urlParameter = readUrl()
-    // console.log(urlParameter)
   });
-
-
-
-  function readUrl() {
-    var url = require('url');
-    console.log(url)
-var url_parts = url.parse(request.url, true);
-var query = url_parts.query;
-var id = req.query.time;
-      console.log(url)
-      return
-      let array = []
-      let time = getParameterByName('time')
-      let period = getParameterByName('period')
-      time = parseInt(time)
-      period = parseInt(period)
-      array = [time,period]
-      return array
-  }
-
-
-  function getParameterByName(name, url) {
-      if (!url) var url = require('url');
-      name = name.replace(/[\[\]]/g, "\\$&");
-      var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-          results = regex.exec(url);
-      if (!results) return null;
-      if (!results[2]) return '';
-      return decodeURIComponent(results[2].replace(/\+/g, " "));
-  }
