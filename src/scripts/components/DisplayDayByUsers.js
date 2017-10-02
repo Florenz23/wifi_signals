@@ -2,24 +2,21 @@ import React from 'react';
 import easyGroup from '../functions/easyGroup'
 import randomColor from 'randomcolor'
 import createUsersArray from '../functions/createUsersArray'
+import timestampToTime from '../functions/timestampToTime'
 
 
 export default class DisplayDayByUsers extends React.Component {
   static defaultProps = { multiplier_x: (33+1/3), multiplier_y:10 };
-
-  timestampToTime(timestamp) {
-      let date = new Date(timestamp *1000)
-      const hour = date.getHours()
-      const minutes = date.getMinutes()
-      const new_time = hour + (minutes/60*100) * 0.01
-      return new_time
-  }
 
   prepareData(index,data) {
     // let data = createSimpleArray(this.props.data)
     // let data = easyGroup(this.props.data)
     // let max = findMaxNew(data)
     // let dataCut = groupByPassedTime()
+    let first_timestamp = data[index][0].timestamp
+    let first_time = timestampToTime(first_timestamp)
+    let last_timestamp = data[index][data[index].length-1].timestamp
+    let last_time = timestampToTime(last_timestamp)
     let time_arr = []
     let d = [`M ${this.props.x} ${this.props.y}`];
     let multiplier = this.props.height/(this.props.max)
@@ -29,8 +26,8 @@ export default class DisplayDayByUsers extends React.Component {
       "rssi" : 10
     }
     let collector = data[index].map(chunk => {
-      let hour = this.timestampToTime(chunk.timestamp)
-      let xNext = this.props.x + hour * (this.props.length/24);
+      let hour = timestampToTime(chunk.timestamp)
+      let xNext = this.props.x + (hour-first_time) * (this.props.length/(last_time-first_time));
       let yNext = this.props.y - (chunk.cellphone[0].rssi+100) * multiplier;
         check_obj.time = hour
         check_obj.rssi = chunk.cellphone[0].rssi

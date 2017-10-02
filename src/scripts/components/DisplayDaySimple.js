@@ -4,30 +4,28 @@ import groupByPassedTime from '../functions/groupByPassedTime'
 import easyGroup from '../functions/easyGroup'
 import findMax from '../functions/findMax'
 import findMaxNew from '../functions/findMaxNew'
+import timestampToTime from '../functions/timestampToTime'
 
 
 export default class DisplayDaySimple extends React.Component {
   static defaultProps = { multiplier_x: (33+1/3), multiplier_y:10 };
 
-  timestampToTime(timestamp) {
-      let date = new Date(timestamp *1000)
-      const hour = date.getHours()
-      const minutes = date.getMinutes()
-      const new_time = hour + (minutes/60*100) * 0.01
-      return new_time
-  }
-
   prepareData() {
     // let data = createSimpleArray(this.props.data)
   let data = easyGroup(this.props.data)
     let max = findMaxNew(data)
+    let first_timestamp = data[0].timestamp
+    let first_time = timestampToTime(first_timestamp)
+
+    let last_timestamp = data[data.length-1].timestamp
+    let last_time = timestampToTime(last_timestamp)
     // console.log(max)
     // let dataCut = groupByPassedTime()
     let d = [`M ${this.props.x} ${this.props.y}`];
     let multiplier = this.props.height/(max)
     let collector = data.map(chunk => {
-      let hour = this.timestampToTime(chunk.timestamp)
-      let xNext = this.props.x + hour * this.props.length/25;
+      let hour = timestampToTime(chunk.timestamp)
+      let xNext = this.props.x + (hour-first_time) * this.props.length/(last_time-first_time);
       let yNext = this.props.y - chunk.amount_cellphones * multiplier;
       return `L ${xNext} ${yNext}`;
     });

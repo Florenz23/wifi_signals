@@ -9,20 +9,29 @@ import findMax from '../functions/findMax'
 import easyGroup from '../functions/easyGroup'
 import findMaxNew from '../functions/findMaxNew'
 import findMaxRssi from '../functions/findMaxRssi'
+import timestampToTime from '../functions/timestampToTime'
+import zoomPeriod from '../functions/zoom/zoomPeriod'
 
 
 export default class Graph extends React.Component {
+  state = {test:0}
   static defaultProps = { width: 800, height: 600 };
-  renderContent() {
+  getLastTime(data) {
+    let timestamp = data[data.length-1].timestamp
+    let hour = timestampToTime(timestamp)
+    return hour
+  }
+  renderContent(lastTime,data) {
     if (this.props.viewSelection == 0) {
       return (
           <DisplayDay
             x={50}
             y={this.props.height - 100}
-            data={this.props.data}
+            data={data}
             length={this.props.width}
             height={this.props.height - 100}
-            max = {findMax(this.props.data)}
+            max = {findMax(data)}
+            x_max = {lastTime}
           />
       )
     }
@@ -31,10 +40,11 @@ export default class Graph extends React.Component {
           <DisplayDaySimple
             x={50}
             y={this.props.height - 100}
-            data={this.props.data}
+            data={data}
             length={this.props.width}
             height={this.props.height - 100}
-            max = {findMax(this.props.data)}
+            max = {findMax(data)}
+            x_max = {lastTime}
           />
       )
     }
@@ -43,28 +53,29 @@ export default class Graph extends React.Component {
           <DisplayDayByUsers
             x={50}
             y={this.props.height - 100}
-            data={this.props.data}
+            data={data}
             length={this.props.width}
             height={this.props.height - 100}
-            max = {findMaxRssi(this.props.data)}
+            max = {findMaxRssi(data)}
+            x_max = {lastTime}
           />
       )
     }
   }
-  renderLegend() {
+  renderLegend(data) {
     if (this.props.viewSelection == 0 ) {
       return (
         <LegendY
           x={0}
           y={0}
           length={this.props.height}
-          max = {findMax(this.props.data)}
+          max = {findMax(data)}
         />
       )
     }
     if (this.props.viewSelection == 1) {
-      let data = easyGroup(this.props.data)
-      let max = findMaxNew(data)
+      let groupData = easyGroup(data)
+      let max = findMaxNew(groupData)
       return (
         <LegendY
           x={0}
@@ -80,12 +91,29 @@ export default class Graph extends React.Component {
           x={0}
           y={0}
           length={this.props.height}
-          max = {findMaxRssi(this.props.data)}
+          max = {findMaxRssi(data)}
         />
       )
     }
   }
+  getData(allData,time,timestamps) {
+    let display_timestamps = timestamps
+
+    let start_time = time
+    if (time == "day") {
+      display_timestamps = 999999
+      start_time = 0
+    }
+    if (display_timestamps == "day") {
+      display_timestamps = 999999
+    }
+    let zoomData = zoomPeriod(allData,start_time,display_timestamps)
+    // this.setState({test: 5});
+    return zoomData
+  }
   render() {
+    let data = this.getData(this.props.sendData,this.props.timeSelection,this.props.timestampSelection)
+    let lastTime = this.getLastTime(data)
     return (
       <svg width={this.props.width} height={this.props.height}>
         <Axis
@@ -104,9 +132,11 @@ export default class Graph extends React.Component {
           x={0}
           y={this.props.height - 50}
           length={this.props.width}
+          x_max={lastTime}
+          data={data}
         />
-        {this.renderLegend()}
-        {this.renderContent()}
+        {this.renderLegend(data)}
+        {this.renderContent(lastTime,data)}
       </svg>
     )
   }
