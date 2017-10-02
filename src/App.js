@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Graph from './scripts/components/graph'
-import zoomPeriod from './scripts/functions/zoom/zoomPeriod'
+import readUrl from './scripts/functions/zoom/readUrl'
 
 
 export default class App extends React.Component {
-  state = { dataSetIndex: 2 , timeSetIndex:1, timestampSetIndex:1}
+  state = { dataSetIndex: 0 , timeSetIndex:5, timestampSetIndex:4}
   static defaultProps = {
     views: [["day"],["simpleDay"],["Macs"]],
     times: [["day"],[0],[2],[4],[6],[8],[10],[12],[14],[16],[18],[20],[22]],
@@ -21,22 +21,11 @@ export default class App extends React.Component {
   selectTimestamp(event) {
     this.setState({timestampSetIndex: event.target.value});
   }
-  getData(allData,time,timestamps) {
-    let display_timestamps = timestamps
 
-    let start_time = time
-    if (time == "day") {
-      display_timestamps = 999999
-      start_time = 0
-    }
-    if (display_timestamps == "day") {
-      display_timestamps = 999999
-    }
-    let zoomData = zoomPeriod(allData,start_time,display_timestamps)
-    return zoomData
-  }
 
   render() {
+    let parametes = readUrl()
+    console.log(parametes)
     let options = this.props.views.map((value, index) => {
       return <option key={index} value={index}>Ansicht {value}</option>
     });
@@ -48,7 +37,6 @@ export default class App extends React.Component {
     });
     let selectedHour = this.props.times[this.state.timeSetIndex][0]
     let selectedAmountTimestamps = this.props.timestamps[this.state.timestampSetIndex][0]
-    let data = this.getData(this.props.datasets,selectedHour,selectedAmountTimestamps)
 
     return (
       <div>
@@ -67,10 +55,10 @@ export default class App extends React.Component {
           onChange={this.selectTimestamp.bind(this)} >
           {options_timestamp}
         </select>
-        <Graph data={data}
+        <Graph sendData={this.props.datasets}
               viewSelection={this.state.dataSetIndex}
-              timeSelection={this.state.timeSetIndex}
-              timestampSelection={this.state.timestampSetIndex}
+              timeSelection={selectedHour}
+              timestampSelection={selectedAmountTimestamps}
         />
       </div>
     )

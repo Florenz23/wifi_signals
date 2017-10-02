@@ -19,7 +19,6 @@ export default class DisplayDaySimple extends React.Component {
 
     let last_timestamp = data[data.length-1].timestamp
     let last_time = timestampToTime(last_timestamp)
-    console.log(last_time)
     // console.log(max)
     // let dataCut = groupByPassedTime()
     let d = [`M ${this.props.x} ${this.props.y}`];
