@@ -20,7 +20,7 @@ var ndjson = require('ndjson')
 //change file here
   var data = require('./src/data/new_files/170915.json');
 
-  var svgRenderer = require('./src/scripts/svg_renderer').default;
+  var svgRenderer = require('./src/scripts/functions/svg_renderer').default;
 
   app.get('/svg/0', function (req, res) {
     var svg = svgRenderer(data,0);
