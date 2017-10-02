@@ -2,8 +2,6 @@ require("babel-register");
 var express = require('express');
 var app = express();
 
-var fs = require('fs');
-var ndjson = require('ndjson')
 var request = require('request');
 
 // var data = require('./src/data/data').default;
